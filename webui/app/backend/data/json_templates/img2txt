@@ -1,0 +1,124 @@
+{
+  "1": {
+    "inputs": {
+      "command_text": "Describe the image in details. --pos_ --neg --neg_ --model deepseek-ai/Janus-Pro-1B --seed -1 --steps 20 --width 512 --height 512 --count 1 --length 80 --cfg 0.1 --file https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Cat_August_2010-4.jpg/1920px-Cat_August_2010-4.jpg --tokens 512"
+    },
+    "class_type": "TextCommandParser",
+    "_meta": {
+      "title": "Text Command Parser"
+    }
+  },
+  "2": {
+    "inputs": {
+      "model_name": [
+        "1",
+        2
+      ]
+    },
+    "class_type": "JanusModelLoader",
+    "_meta": {
+      "title": "Janus Model Loader"
+    }
+  },
+  "3": {
+    "inputs": {
+      "base64_data": [
+        "1",
+        10
+      ],
+      "image_output": "Hide",
+      "save_prefix": "ComfyUI"
+    },
+    "class_type": "easy loadImageBase64",
+    "_meta": {
+      "title": "Load Image (Base64)"
+    }
+  },
+  "4": {
+    "inputs": {
+      "a": 1,
+      "b": [
+        "1",
+        9
+      ]
+    },
+    "class_type": "JWFloatSub",
+    "_meta": {
+      "title": "Float Subtract"
+    }
+  },
+  "5": {
+    "inputs": {
+      "question": [
+        "1",
+        0
+      ],
+      "seed": [
+        "1",
+        4
+      ],
+      "temperature": 0.1,
+      "top_p": [
+        "4",
+        0
+      ],
+      "max_new_tokens": [
+        "1",
+        11
+      ],
+      "model": [
+        "2",
+        0
+      ],
+      "processor": [
+        "2",
+        1
+      ],
+      "image": [
+        "3",
+        0
+      ]
+    },
+    "class_type": "JanusImageUnderstanding",
+    "_meta": {
+      "title": "Janus Image Understanding"
+    }
+  },
+  "6": {
+    "inputs": {
+      "texts": [
+        "5",
+        0
+      ],
+      "filename_prefix": "img2txt/txt"
+    },
+    "class_type": "SaveTextNode",
+    "_meta": {
+      "title": "Save Text"
+    }
+  },
+  "7": {
+    "inputs": {
+      "anything": [
+        "5",
+        0
+      ]
+    },
+    "class_type": "easy clearCacheAll",
+    "_meta": {
+      "title": "Clear Cache All"
+    }
+  },
+  "8": {
+    "inputs": {
+      "anything": [
+        "5",
+        0
+      ]
+    },
+    "class_type": "easy cleanGpuUsed",
+    "_meta": {
+      "title": "Clean VRAM Used"
+    }
+  }
+}
