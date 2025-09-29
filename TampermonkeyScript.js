@@ -3,8 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      8.5
 // @description  Handle img/video/text safely, prevent race conditions, style wrappers and buttons
-// @match        https://ai.home.ftc/*
-// @match        https://service.ai.home.ftc/*
+// @match        https://myendpoint/*
 // @grant        none
 // ==/UserScript==
 
