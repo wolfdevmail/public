@@ -1,7 +1,7 @@
 This is the first time I'm publishing here, so excuse the format, and lack of time to make a better solution, feel free to ask if anything is not clear, however, in any case, some limited programming/dev knowledge would help here, and is kinda expected when dealing with modifying your locally hosted ai..
 Please note that not much went into "security", or making a solution for hosts that have multiple users, etc. I only use this for myself, and found that there are no existing solutions, so I wanted to provide one.
 
-The main objective is to allow use on open webui to make prompts which result in generating images, video, text, based on specific preprepared confyui workflow templates, with some adjustments.
+The main objective is to allow users on open webui to make prompts which result in generating images, video, text, based on specific preprepared confyui workflow templates, with some adjustments.
 
 Usage:
 <img width="1228" height="533" alt="image" src="https://github.com/user-attachments/assets/a0e46566-d919-4068-859c-14ffa5bb976f" />
