@@ -69,7 +69,7 @@ Instead of modifying WebUI’s frontend directly, we use a Tampermonkey userscri
   - /app/backend/data/json_templates/           # Workflow templates (.json). This should contain workflow files, i.e. txt2img.json, txt2img_custom.json, etc.
   - /app/backend/open_webui/routers/images.py   # Modified router with parser & workflow loader 
   - /app/backend/open_webui/utils/middleware.py # Middleware patch for chat handling
-confyui: /basedir/custom_nodes/FTC              # should contain the folder for the custom node (it is not online, it cannot be imported/downloaded)
+  - confyui: /basedir/custom_nodes/FTC              # should contain the folder for the custom node (it is not online, it cannot be imported/downloaded)
 
 🚀 Quick Start
 I provided all modified files here, however, depending on your version of confyui and openwebui, you may need to make a copy of the original file and integrate the modifications directly inside it, in this case, look at Modifications.md
