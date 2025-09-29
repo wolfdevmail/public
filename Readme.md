@@ -1,0 +1,2 @@
+This is the first time I'm publishing here, so excuse the format, and lack of time to make a better solution, feel free to ask if anything is not clear, however, in any case, some limited programming/dev knowledge would help here, and is kinda expected when dealing with modifying your locally hosted ai..
+Please note that not much went into "security", or making a solution for hosts that have multiple users, etc. I only use this for myself, and found that there are no existing solutions, so I wanted to provide one.
