@@ -211,11 +211,17 @@
     return wrapper;
   }
 
-  async function processButton(btn) {
-    const img = btn.querySelector('img');
+  async function processSection(section) {
+    const img = section.querySelector('img');
     if (!img) return;
 
     const normalizedSrc = normalizeUrl(img.src);
+    // Only process if src matches /api/v1/files/.../content
+    if (!/^\/api\/v1\/files\/[^/]+\/content$/.test(normalizedSrc)) {
+        log('Skipped image, src does not match pattern:', normalizedSrc);
+        return;
+    }
+
     const generatedFrom = img.dataset.generatedFrom || '';
     const nextWrapper = img.nextElementSibling;
 
@@ -224,7 +230,7 @@
         nextWrapper.remove();
       }
       const wrapper = await createWrapperForImage(img);
-      if (wrapper) btn.appendChild(wrapper);
+      if (wrapper) section.appendChild(wrapper);
       log('Generated new wrapper for', normalizedSrc);
     } else {
       log('Wrapper is up to date for', normalizedSrc);
@@ -237,7 +243,11 @@
     try {
       const buttons = document.querySelectorAll('button[aria-label="Show image preview"]');
       for (const btn of buttons) {
-        await processButton(btn);
+        await processSection(btn);
+      }
+      const divs = document.querySelectorAll('div[class="flex h-full max-h-full justify-center items-center z-0"]');
+      for (const div of divs) {
+        await processSection(div);
       }
     } finally {
       scanLock = false;
