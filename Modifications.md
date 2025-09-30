@@ -97,6 +97,8 @@ def parse_prompt(prompt: str) -> tuple[dict, str]:
 ```
     
 -- ADDED, This is to extract last input message from user, as well as possible image that the user loaded into the chat (not a lot of testing went into this, i.e. could we have used a built in function, what would happen with multiple images, or non image files, etc.).
+
+```python
 async def extract_chat_content(request: Request) -> str | None:
     try:
         body_bytes = await request.body()
@@ -133,7 +135,11 @@ async def extract_chat_content(request: Request) -> str | None:
     except Exception as e:
         log.exception(f"Error extracting chat content: {e}")
         return ""
+```
+
 -- MODIFIED, Modified function so that it loads other than just images!
+
+```python
 def load_url_image_data(url, headers=None):
     try:
         if headers:
@@ -148,8 +154,10 @@ def load_url_image_data(url, headers=None):
     except Exception as e:
         log.exception(f"Error saving image: {e}")
         return None
-
+```
 -- MODIFIED, Modified image_generations, the elif section related to confyui, so that it uses our parsed prompt, with correct workflow, etc.:
+
+```python
         elif request.app.state.config.IMAGE_GENERATION_ENGINE == "comfyui":
             exact_prompt = await extract_chat_content(request)
             final_dict, final_workflow = parse_prompt(exact_prompt)
@@ -200,12 +208,15 @@ def load_url_image_data(url, headers=None):
                 )
                 images.append({"url": url})
             return images
+```
 
 # Middleware.py
 
 In middleware.py, we modified one function.
 
 -- MODIFIED, the important modification is inside the function chat_image_generation_handler, search for "url": image["url"], and replace the whole part with the following, this is in order to achieve 2 objectives: the first is to ignore error happening in case of private chat, and the second is to let ai respond with the user's prompt only without modifications:
+
+```python
         try:
             await __event_emitter__(
                 {
@@ -228,6 +239,4 @@ In middleware.py, we modified one function.
             system_message_content = "<context>Output the following without any modification, analysis, adding, removing: " + user_message + "</context>"
         else:
             system_message_content = "<context>User is shown the generated image, tell the user that the image has been generated</context>"
-
-  scan();
-})();
+```
