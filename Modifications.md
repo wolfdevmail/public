@@ -1,8 +1,11 @@
 This file includes only the specific modifications to do for images.py and middlware.py in case simply copying the provided files causes bugs related to different original versions.
 
+# Image.py
+
 In Image.py, we added 2 functions, and modified two others.
 
-# ADDED, this is to parse user's prompt, decide which template is wanted by the user, and update values by whatever is from the user's prompt.
+-- ADDED, this is to parse user's prompt, decide which template is wanted by the user, and update values by whatever is from the user's prompt.
+
 def parse_prompt(prompt: str) -> tuple[dict, str]:
     final_dict = {"pos_": "", "neg": "", "neg_": "", "model": "", "seed": -1, "steps": 4, "width": 512, "height": 512, "count": 1, "length": 80, "cfg": 1.0, "file": "", "tokens": 512}
     # Determine JSON template file
@@ -91,7 +94,7 @@ def parse_prompt(prompt: str) -> tuple[dict, str]:
     json_result = json.dumps(template, indent=2, ensure_ascii=False)
     return final_dict, json_result
 
-# ADDED, This is to extract last input message from user, as well as possible image that the user loaded into the chat (not a lot of testing went into this, i.e. could we have used a built in function, what would happen with multiple images, or non image files, etc.).
+-- ADDED, This is to extract last input message from user, as well as possible image that the user loaded into the chat (not a lot of testing went into this, i.e. could we have used a built in function, what would happen with multiple images, or non image files, etc.).
 async def extract_chat_content(request: Request) -> str | None:
     try:
         body_bytes = await request.body()
@@ -128,7 +131,7 @@ async def extract_chat_content(request: Request) -> str | None:
     except Exception as e:
         log.exception(f"Error extracting chat content: {e}")
         return ""
-# MODIFIED, Modified function so that it loads other than just images!
+-- MODIFIED, Modified function so that it loads other than just images!
 def load_url_image_data(url, headers=None):
     try:
         if headers:
@@ -144,7 +147,7 @@ def load_url_image_data(url, headers=None):
         log.exception(f"Error saving image: {e}")
         return None
 
-# MODIFIED, Modified image_generations, the elif section related to confyui, so that it uses our parsed prompt, with correct workflow, etc.:
+-- MODIFIED, Modified image_generations, the elif section related to confyui, so that it uses our parsed prompt, with correct workflow, etc.:
         elif request.app.state.config.IMAGE_GENERATION_ENGINE == "comfyui":
             exact_prompt = await extract_chat_content(request)
             final_dict, final_workflow = parse_prompt(exact_prompt)
@@ -196,9 +199,11 @@ def load_url_image_data(url, headers=None):
                 images.append({"url": url})
             return images
 
+# Middleware.py
+
 In middleware.py, we modified one function.
 
-# MODIFIED, the important modification is inside the function chat_image_generation_handler, search for "url": image["url"], and replace the whole part with the following, this is in order to achieve 2 objectives: the first is to ignore error happening in case of private chat, and the second is to let ai respond with the user's prompt only without modifications:
+-- MODIFIED, the important modification is inside the function chat_image_generation_handler, search for "url": image["url"], and replace the whole part with the following, this is in order to achieve 2 objectives: the first is to ignore error happening in case of private chat, and the second is to let ai respond with the user's prompt only without modifications:
         try:
             await __event_emitter__(
                 {
