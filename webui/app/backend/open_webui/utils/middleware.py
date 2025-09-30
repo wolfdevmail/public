@@ -615,7 +615,7 @@ async def chat_image_generation_handler(
             log.info("Ignoring attribute error because of private chat")
 
         if request.app.state.config.IMAGE_GENERATION_ENGINE == "comfyui":
-            system_message_content = "<context>Output the following without any modification, analysis, adding, removing: " + user_message + "</context>"
+            system_message_content = "<system>You are a literal text output processor. Do NOT modify, analyze, or comment. Always output the full user input exactly as it is.</system>"
         else:
             system_message_content = "<context>User is shown the generated image, tell the user that the image has been generated</context>"
     except Exception as e:
