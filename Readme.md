@@ -13,6 +13,9 @@ Installation:
   - /app/backend/open_webui/utils/middleware.py (could break if you have a different version than the original one we modified)
   - /app/backend/open_webui/routers/images.py (could break if you have a different version than the original one we modified)
 
+Note:
+- Some additional controls are in place, for instance, in loader.js so that it executes in specific cases when it sees img element inside specific button or div, this is to limit which images are replaced, depending on the version, there could be differences in button or div format leading to js part not being executed, in this case, right click on the broken image, inspect, check the specifics of where it is located (i.e. what is its parent? a div? a button? how can we identify it? label? class? update the scan function so that it is exactly looking at these parents!
+
 Usage:
 
 <img width="1228" height="533" alt="image" src="https://github.com/user-attachments/assets/a0e46566-d919-4068-859c-14ffa5bb976f" />
