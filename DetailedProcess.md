@@ -50,27 +50,11 @@ We extend WebUI’s backend to handle dynamic workflows, parameter parsing, and 
 
 🛠️ Step 3: Frontend — Media Rendering
 
-Instead of modifying WebUI’s frontend directly, we use a Tampermonkey userscript.
+It appears open webui comes with empty loader.js file for customization (did not confirm this, but appears to be the case), so we can add contents to this file.
 
 🔹 Features
 - Replace hardcoded <img> tags with correct media handlers.
 - Detect and render image, video, or text.
 - Add Copy and Download buttons for each result.
 - Auto-update when messages are added/removed.
-
-🔹 Setup
-- Install the script in Tampermonkey.
-- Update the @match line: // @match https://myendpoint/*
-- Grant Allow User Scripts permission in your browser.
-
-📂 Destination Repository Layout
-# If you use docker, you need to bind these as volumes ofc!
-- webui:
-  - /app/backend/data/json_templates/           # Workflow templates (.json). This should contain workflow files, i.e. txt2img.json, txt2img_custom.json, etc.
-  - /app/backend/open_webui/routers/images.py   # Modified router with parser & workflow loader 
-  - /app/backend/open_webui/utils/middleware.py # Middleware patch for chat handling
-  - confyui: /basedir/custom_nodes/FTC              # should contain the folder for the custom node (it is not online, it cannot be imported/downloaded)
-
-🚀 Quick Start
-I provided all modified files here, however, depending on your version of confyui and openwebui, you may need to make a copy of the original file and integrate the modifications directly inside it, in this case, look at Modifications.md
-If both your webui and confyui are recent, they probably have the same exact code than the ones I modified, and you can simply copy the files provided here to the correct placement, and modify your docker configuration so that they would include these files.
+0If both your webui and confyui are recent, they probably have the same exact code than the ones I modified, and you can simply copy the files provided here to the correct placement, and modify your docker configuration so that they would include these files.
