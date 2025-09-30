@@ -7,8 +7,8 @@ The current solution is sloppy, but works, can use any preprepared template work
 **Hopefully, something along these lines would become soon available in open webui directly, or as a separate tool/function.**
 
 Installation:
-- You will also need to add the custom node to confyui in /basedir/custom_nodes/FTC, test that custom node works inside confyui before testing anything on side of webui
-- You will need to override 3 files on the webui side, you can try to simply use files provided in this repo, however, if your original files are different than my original files (different versions, etc.) then you will need to make copy of the original file you have, and manually update the contents inside it using the Modifications.md file.
+- You need to add the custom node to confyui in /basedir/custom_nodes/FTC, test that custom node works inside confyui before testing anything on side of webui
+- You also need to override 3 files on the webui side, you can try to simply use files provided in this repo, however, if your original files are different than my original files (different versions, etc.) then you will need to make copy of the original file you have, and manually update the contents inside it using the Modifications.md file.
   - /app/backend/open_webui/static/loader.js (in original build, this is empty, I think it is kept as such so that you can customize a loader, which is what we are doing)
   - /app/backend/open_webui/utils/middleware.py (could break if you have a different version than the original one we modified)
   - /app/backend/open_webui/routers/images.py (could break if you have a different version than the original one we modified)
