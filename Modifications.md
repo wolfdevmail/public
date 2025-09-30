@@ -6,6 +6,7 @@ In Image.py, we added 2 functions, and modified two others.
 
 -- ADDED, this is to parse user's prompt, decide which template is wanted by the user, and update values by whatever is from the user's prompt.
 
+<pre> ```python #
 def parse_prompt(prompt: str) -> tuple[dict, str]:
     final_dict = {"pos_": "", "neg": "", "neg_": "", "model": "", "seed": -1, "steps": 4, "width": 512, "height": 512, "count": 1, "length": 80, "cfg": 1.0, "file": "", "tokens": 512}
     # Determine JSON template file
@@ -93,7 +94,8 @@ def parse_prompt(prompt: str) -> tuple[dict, str]:
 
     json_result = json.dumps(template, indent=2, ensure_ascii=False)
     return final_dict, json_result
-
+``` </pre>
+    
 -- ADDED, This is to extract last input message from user, as well as possible image that the user loaded into the chat (not a lot of testing went into this, i.e. could we have used a built in function, what would happen with multiple images, or non image files, etc.).
 async def extract_chat_content(request: Request) -> str | None:
     try:
