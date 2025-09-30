@@ -14,6 +14,7 @@ Installation:
   - /app/backend/open_webui/routers/images.py (could break if you have a different version than the original one we modified)
 
 Usage:
+
 <img width="1228" height="533" alt="image" src="https://github.com/user-attachments/assets/a0e46566-d919-4068-859c-14ffa5bb976f" />
 <img width="1695" height="743" alt="image" src="https://github.com/user-attachments/assets/bf048205-f9b7-4fe3-8010-7c4aa37984a2" />
 <img width="1084" height="423" alt="image" src="https://github.com/user-attachments/assets/6ff9e94b-7875-48aa-9fec-7ebe0b067448" />
