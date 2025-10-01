@@ -155,7 +155,7 @@ def load_url_image_data(url, headers=None):
         log.exception(f"Error saving image: {e}")
         return None
 ```
--- MODIFIED, Modified image_generations, the elif section related to confyui, so that it uses our parsed prompt, with correct workflow, etc.:
+-- MODIFIED, Modified image_generations, the elif section related to comfyui, so that it uses our parsed prompt, with correct workflow, etc.:
 
 ```python
         elif request.app.state.config.IMAGE_GENERATION_ENGINE == "comfyui":
