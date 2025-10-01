@@ -1,13 +1,13 @@
 This is the first time I'm publishing here, so excuse the format, and lack of time to make a better solution, feel free to ask if anything is not clear, however, in any case, some limited programming/dev knowledge would help here, and is kinda expected when dealing with modifying your locally hosted ai..
 Please note that not much went into "security", or making a solution for hosts that have multiple users, etc. I only use this for myself, and found that there are no existing solutions, so I wanted to provide one.
 
-The main objective is to allow users on open webui to make prompts which result in generating images, video, text, based on specific preprepared confyui workflow templates, with some adjustments.
+The main objective is to allow users on open webui to make prompts which result in generating images, video, text, based on specific preprepared comfyui workflow templates, with some adjustments.
 
-The current solution is sloppy, but works, can use any preprepared template workflow, can create new templates as long as we use the input/output from the provided confyui node, and can view results directly in open webui.
+The current solution is sloppy, but works, can use any preprepared template workflow, can create new templates as long as we use the input/output from the provided comfyui node, and can view results directly in open webui.
 **Hopefully, something along these lines would become soon available in open webui directly, or as a separate tool/function.**
 
 Installation:
-- You need to add the custom node to confyui in /basedir/custom_nodes/FTC, test that custom node works inside confyui before testing anything on side of webui
+- You need to add the custom node to comfyui in /basedir/custom_nodes/FTC, test that custom node works inside comfyui before testing anything on side of webui
 - You also need to override 3 files on the webui side, you can try to simply use files provided in this repo, however, if your original files are different than my original files (different versions, etc.) then you will need to make copy of the original file you have, and manually update the contents inside it using the Modifications.md file.
   - /app/backend/open_webui/static/loader.js (in original build, this is empty, I think it is kept as such so that you can customize a loader, which is what we are doing)
   - /app/backend/open_webui/utils/middleware.py (could break if you have a different version than the original one we modified)
