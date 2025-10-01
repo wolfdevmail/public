@@ -9,8 +9,8 @@ The objective of the work below is to extend Open WebUI to interact seamlessly w
 - Beyond images: Generate videos, text, and more.
 
 To overcome this, we need 3 main things:
-- Input output on ConfyUI side that supports easily edited parameters in wanted format
-- Open webui backend to support managing multiple workflows, as well as passing what we want to confyui
+- Input output on comfyui side that supports easily edited parameters in wanted format
+- Open webui backend to support managing multiple workflows, as well as passing what we want to comfyui
 - Front end to allow for other than images
 
 🛠️ Step 1: ComfyUI — Input & Output Management
@@ -57,4 +57,4 @@ It appears open webui comes with empty loader.js file for customization (did not
 - Detect and render image, video, or text.
 - Add Copy and Download buttons for each result.
 - Auto-update when messages are added/removed.
-0If both your webui and confyui are recent, they probably have the same exact code than the ones I modified, and you can simply copy the files provided here to the correct placement, and modify your docker configuration so that they would include these files.
+0If both your webui and comfyui are recent, they probably have the same exact code than the ones I modified, and you can simply copy the files provided here to the correct placement, and modify your docker configuration so that they would include these files.
